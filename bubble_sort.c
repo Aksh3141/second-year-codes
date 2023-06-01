@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int * generate_random_list(int a){
+	int * temp;
+	temp = (int *)malloc(sizeof(int)*a);
+	for(int i =0; i<a; i++){
+		temp[i]=rand()%1000;
+		}	
+	return temp;
+	}
+	
+void swapping(int * a, int *b){
+	int temp;
+	temp = *a;
+	*a=*b;
+	*b=temp;}
+	
+void bubble_sort(int * list, int a){
+	for(int i=0; i<a-1; i++){
+		for(int j=i+1; j<a; j++){
+			if(list[i]>list[j]){
+				swapping(&list[i],&list[j]);}
+			}
+		}
+	}
+	
+void print_list(int * list, int a){
+	for(int i=0; i<a; i++){
+		printf("%d\t",list[i]);
+		}
+	printf("\n");	
+	}
+
+int main(){
+	printf("Enter the size of random list you want: ");
+	int a;
+	scanf("%d",&a);
+	int * list;
+	list = generate_random_list(a);
+	printf("----------------------------\n");
+	print_list(list,a);
+	bubble_sort(list,a);
+	printf("----------------------------\n");
+	printf("Your sorted list:\n");
+	print_list(list,a);
+	free(list);
+	}
